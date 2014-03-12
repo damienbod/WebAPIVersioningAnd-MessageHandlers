@@ -7,7 +7,7 @@ using System.Web.Http;
 namespace WebAPIVersioning
 {
 
-    public class VersioningHandlerRedirect : DelegatingHandler
+    public class VersioningHandlerReturn : DelegatingHandler
     {
         // stop proccessing return directly to client
         protected override async Task<HttpResponseMessage> SendAsync(

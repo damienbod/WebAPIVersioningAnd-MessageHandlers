@@ -13,8 +13,9 @@ namespace WebAPIVersioning
                 routeTemplate: "api/veryold",
                 defaults: null,
                 constraints: null,
-                handler: new VersioningHandlerRedirect()
+                handler: new VersioningHandlerReturn()
                 );
+
             config.MessageHandlers.Add(new VersioningHandler());
         }
     }
