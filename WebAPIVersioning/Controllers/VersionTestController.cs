@@ -32,7 +32,7 @@ namespace WebAPIVersioning.Controllers
 
         private IHttpActionResult SetVersionOk(object body)
         {
-            return new SetVersionInResponseHeader<object>(Request, "1", body);
+            return new SetVersionInResponseHeader<object>(Request, "1", body, true);
         }
     }
 }
