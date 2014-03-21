@@ -11,23 +11,28 @@ namespace WebAPIVersioning.Controllers
     {
         [HttpGet]
         [VersionedRoute("api/versiontest/a", 2)]
-        public IEnumerable<string> GetA()
+        public IHttpActionResult GetA()
         {
-            return new string[] { "returning A Version 2" };
+            return SetVersionOk(new string[] { "returning A Version 2" });
         }
 
         [HttpGet]
         [VersionedRoute("api/versiontest/b", 2)]
-        public IEnumerable<string> GetB()
+        public IHttpActionResult GetB()
         {
-            return new string[] { "returning B Version 2" };
+            return SetVersionOk(new string[] { "returning B Version 2" });
         }
 
         [VersionedRoute("api/versiontest/{id}/c", 2)]
         [HttpGet]
-        public IEnumerable<string> GetC(int id)
+        public IHttpActionResult GetC(int id)
         {
-            return new string[] { "returning C Version 2, id:" + id };
-        } 
+            return SetVersionOk(new string[] { "returning C Version 2, id:" + id });
+        }
+
+        private IHttpActionResult SetVersionOk(object body)
+        {
+            return new SetVersionInResponseHeader<object>(Request, "2", body);
+        }
     }
 }
